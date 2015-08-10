@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76ADFC9C1B78ABE9003F6707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADFC9B1B78ABE9003F6707 /* AppDelegate.swift */; };
+		76ADFC9E1B78ABE9003F6707 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADFC9D1B78ABE9003F6707 /* ViewController.swift */; };
+		76ADFCA11B78ABE9003F6707 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFC9F1B78ABE9003F6707 /* Main.storyboard */; };
+		76ADFCA31B78ABE9003F6707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFCA21B78ABE9003F6707 /* Assets.xcassets */; };
+		76ADFCA61B78ABE9003F6707 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFCA41B78ABE9003F6707 /* LaunchScreen.storyboard */; };
+		76ADFCAF1B78AC05003F6707 /* ABProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADFCAE1B78AC05003F6707 /* ABProgressButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		76ADFC981B78ABE9003F6707 /* ABProgressButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABProgressButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76ADFC9B1B78ABE9003F6707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		76ADFC9D1B78ABE9003F6707 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		76ADFCA01B78ABE9003F6707 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		76ADFCA21B78ABE9003F6707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		76ADFCA51B78ABE9003F6707 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		76ADFCA71B78ABE9003F6707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76ADFCAE1B78AC05003F6707 /* ABProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABProgressButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76ADFC951B78ABE9003F6707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76ADFC8F1B78ABE9003F6707 = {
+			isa = PBXGroup;
+			children = (
+				76ADFC9A1B78ABE9003F6707 /* ABProgressButtonDemo */,
+				76ADFCAD1B78AC05003F6707 /* ABProgressButton */,
+				76ADFC991B78ABE9003F6707 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76ADFC991B78ABE9003F6707 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76ADFC981B78ABE9003F6707 /* ABProgressButtonDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76ADFC9A1B78ABE9003F6707 /* ABProgressButtonDemo */ = {
+			isa = PBXGroup;
+			children = (
+				76ADFC9B1B78ABE9003F6707 /* AppDelegate.swift */,
+				76ADFC9D1B78ABE9003F6707 /* ViewController.swift */,
+				76ADFC9F1B78ABE9003F6707 /* Main.storyboard */,
+				76ADFCA21B78ABE9003F6707 /* Assets.xcassets */,
+				76ADFCA41B78ABE9003F6707 /* LaunchScreen.storyboard */,
+				76ADFCA71B78ABE9003F6707 /* Info.plist */,
+			);
+			path = ABProgressButtonDemo;
+			sourceTree = "<group>";
+		};
+		76ADFCAD1B78AC05003F6707 /* ABProgressButton */ = {
+			isa = PBXGroup;
+			children = (
+				76ADFCAE1B78AC05003F6707 /* ABProgressButton.swift */,
+			);
+			name = ABProgressButton;
+			path = ../ABProgressButton;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76ADFC971B78ABE9003F6707 /* ABProgressButtonDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76ADFCAA1B78ABE9003F6707 /* Build configuration list for PBXNativeTarget "ABProgressButtonDemo" */;
+			buildPhases = (
+				76ADFC941B78ABE9003F6707 /* Sources */,
+				76ADFC951B78ABE9003F6707 /* Frameworks */,
+				76ADFC961B78ABE9003F6707 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ABProgressButtonDemo;
+			productName = ABProgressButtonDemo;
+			productReference = 76ADFC981B78ABE9003F6707 /* ABProgressButtonDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76ADFC901B78ABE9003F6707 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = bakhtin;
+				TargetAttributes = {
+					76ADFC971B78ABE9003F6707 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 76ADFC931B78ABE9003F6707 /* Build configuration list for PBXProject "ABProgressButtonDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 76ADFC8F1B78ABE9003F6707;
+			productRefGroup = 76ADFC991B78ABE9003F6707 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76ADFC971B78ABE9003F6707 /* ABProgressButtonDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76ADFC961B78ABE9003F6707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ADFCA61B78ABE9003F6707 /* LaunchScreen.storyboard in Resources */,
+				76ADFCA31B78ABE9003F6707 /* Assets.xcassets in Resources */,
+				76ADFCA11B78ABE9003F6707 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76ADFC941B78ABE9003F6707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76ADFC9E1B78ABE9003F6707 /* ViewController.swift in Sources */,
+				76ADFCAF1B78AC05003F6707 /* ABProgressButton.swift in Sources */,
+				76ADFC9C1B78ABE9003F6707 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		76ADFC9F1B78ABE9003F6707 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ADFCA01B78ABE9003F6707 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		76ADFCA41B78ABE9003F6707 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76ADFCA51B78ABE9003F6707 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		76ADFCA81B78ABE9003F6707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		76ADFCA91B78ABE9003F6707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		76ADFCAB1B78ABE9003F6707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ABProgressButtonDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bakhtin.ABProgressButtonDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		76ADFCAC1B78ABE9003F6707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ABProgressButtonDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bakhtin.ABProgressButtonDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76ADFC931B78ABE9003F6707 /* Build configuration list for PBXProject "ABProgressButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76ADFCA81B78ABE9003F6707 /* Debug */,
+				76ADFCA91B78ABE9003F6707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76ADFCAA1B78ABE9003F6707 /* Build configuration list for PBXNativeTarget "ABProgressButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76ADFCAB1B78ABE9003F6707 /* Debug */,
+				76ADFCAC1B78ABE9003F6707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76ADFC901B78ABE9003F6707 /* Project object */;
+}
