@@ -13,6 +13,7 @@
 		76ADFCA31B78ABE9003F6707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFCA21B78ABE9003F6707 /* Assets.xcassets */; };
 		76ADFCA61B78ABE9003F6707 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFCA41B78ABE9003F6707 /* LaunchScreen.storyboard */; };
 		76ADFCAF1B78AC05003F6707 /* ABProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADFCAE1B78AC05003F6707 /* ABProgressButton.swift */; };
+		76ADFCB11B78C1B8003F6707 /* ABProgressButton.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 76ADFCB01B78C1B8003F6707 /* ABProgressButton.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		76ADFCA51B78ABE9003F6707 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76ADFCA71B78ABE9003F6707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76ADFCAE1B78AC05003F6707 /* ABProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABProgressButton.swift; sourceTree = "<group>"; };
+		76ADFCB01B78C1B8003F6707 /* ABProgressButton.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ABProgressButton.podspec; path = ../../ABProgressButton.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				76ADFCA21B78ABE9003F6707 /* Assets.xcassets */,
 				76ADFCA41B78ABE9003F6707 /* LaunchScreen.storyboard */,
 				76ADFCA71B78ABE9003F6707 /* Info.plist */,
+				76ADFCB01B78C1B8003F6707 /* ABProgressButton.podspec */,
 			);
 			path = ABProgressButtonDemo;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76ADFCB11B78C1B8003F6707 /* ABProgressButton.podspec in Resources */,
 				76ADFCA61B78ABE9003F6707 /* LaunchScreen.storyboard in Resources */,
 				76ADFCA31B78ABE9003F6707 /* Assets.xcassets in Resources */,
 				76ADFCA11B78ABE9003F6707 /* Main.storyboard in Resources */,
