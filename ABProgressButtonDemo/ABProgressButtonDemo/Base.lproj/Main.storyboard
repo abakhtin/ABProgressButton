@@ -22,14 +22,28 @@
                                     <constraint firstAttribute="height" constant="44" id="KIt-qg-OfC"/>
                                     <constraint firstAttribute="width" constant="180" id="Z6a-7c-Iq9"/>
                                 </constraints>
-                                <state key="normal" title="Download"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Download" image="download"/>
+                                <state key="highlighted" image="download"/>
                                 <connections>
                                     <action selector="progressButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmT-l1-Slf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwv-Kb-EjV">
+                                <rect key="frame" x="200" y="142" width="201" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="R0d-6t-Yy0"/>
+                                    <constraint firstAttribute="height" constant="81" id="s0A-ak-dH8"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.0" blue="0.2218196449" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button" image="download"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vwv-Kb-EjV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4ix-Wg-49e"/>
+                            <constraint firstItem="Vwv-Kb-EjV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="122" id="ATf-o3-bSs"/>
                             <constraint firstItem="dbw-UY-wEC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="L8z-Qk-Hl8"/>
                             <constraint firstItem="dbw-UY-wEC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fBJ-8B-n4s"/>
                         </constraints>
@@ -40,6 +54,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="403" y="357"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="download" width="34" height="34"/>
+    </resources>
 </document>

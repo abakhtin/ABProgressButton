@@ -300,6 +300,7 @@
 				76ADFCAC1B78ABE9003F6707 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
