@@ -11,63 +11,63 @@ import UIKit
 ///    ABProgressButton provides functionality for creating custom animation of UIButton during processing some task.
 ///    Should be created in IB as custom class UIButton to prevent title of the button appearing.
 ///    Provides mechanism for color inverting on highlitening and using tintColor for textColor(default behavior for system button)
-@IBDesignable @objc class ABProgressButton: UIButton {
+@IBDesignable @objc public class ABProgressButton: UIButton {
 
     /// **UI configuration. IBInspectable.** Allows change corner radius on default button state. Has default value of 5.0
-    @IBInspectable var cornerRadius: CGFloat = 5.0
+    @IBInspectable public var cornerRadius: CGFloat = 5.0
 
     
     /// **UI configuration. IBInspectable.** Allows change border width on default button state. Has default value of 3.0
-    @IBInspectable var borderWidth: CGFloat = 3.0
+    @IBInspectable public var borderWidth: CGFloat = 3.0
     
     /// **UI configuration. IBInspectable.** Allows change border color on default button state. Has default value of control tintColor
-    @IBInspectable lazy var borderColor: UIColor = {
+    @IBInspectable public lazy var borderColor: UIColor = {
         return self.tintColor
     }()
     
     /// **UI configuration. IBInspectable.** Allows change circle radius on processing button state. Has default value of 20.0
-    @IBInspectable var circleRadius: CGFloat = 20.0
+    @IBInspectable public var circleRadius: CGFloat = 20.0
     
     /// **UI configuration. IBInspectable.** Allows change circle border width on processing button state. Has default value of 3.0
-    @IBInspectable var circleBorderWidth: CGFloat = 3.0
+    @IBInspectable public var circleBorderWidth: CGFloat = 3.0
     
     /// **UI configuration. IBInspectable.** Allows change circle border color on processing button state. Has default value of control tintColor
-    @IBInspectable lazy var circleBorderColor: UIColor = {
+    @IBInspectable public lazy var circleBorderColor: UIColor = {
         return self.tintColor
     }()
     
     /// **UI configuration. IBInspectable.** Allows change circle background color on processing button state. Has default value of UIColor.whiteColor()
-    @IBInspectable var circleBackgroundColor: UIColor = UIColor.whiteColor()
+    @IBInspectable public var circleBackgroundColor: UIColor = UIColor.whiteColor()
     
     /// **UI configuration. IBInspectable.** Allows change circle cut angle on processing button state. 
     /// Should have value between 0 and 360 degrees. Has default value of 45 degrees
-    @IBInspectable var circleCutAngle: CGFloat = 45.0
+    @IBInspectable public var circleCutAngle: CGFloat = 45.0
     
     
     /// **UI configuration. IBInspectable.** 
     /// If true, colors of content and background will be inverted on button highlightening. Image should be used as template for correct image color inverting.
     /// If false you should use default mechanism for text and images highlitening. 
     /// Has default value of true
-    @IBInspectable var invertColorsOnHighlight: Bool = true
+    @IBInspectable public var invertColorsOnHighlight: Bool = true
     
     /// **UI configuration. IBInspectable.** 
     /// If true, tintColor whould be used for text, else value from UIButton.textColorForState() would be used.
     /// Has default value of true
-    @IBInspectable var useTintColorForText: Bool = true
+    @IBInspectable public var useTintColorForText: Bool = true
 
     
     /** **Buttons states enum**
     - .Default: Default state of button with border line.
     - .Progressing: State of button without content, button has the form of circle with cut angle with rotation animation. 
     */
-    enum State {
+    public enum State {
         case Default, Progressing
     }
     
     /** **State changing**
     Should be used to change state of button from one state to another. All transitions between states would be animated. To update progress indicator use `progress` value
     */
-    var progressState: State = .Default {
+    public var progressState: State = .Default {
         didSet {
             if(progressState == .Default) { self.updateToDefaultStateAnimated(true)}
             if(progressState == .Progressing) { self.updateToProgressingState()}
@@ -77,7 +77,7 @@ import UIKit
     /** **State changing**
     Should be used to change progress indicator. Should have value from 0.0 to 1.0. `progressState` should be .Progressing to allow change progress(except nil value).
     */
-    var progress: CGFloat? {
+    public var progress: CGFloat? {
         didSet {
             if progress != nil {
                 assert(self.progressState == .Progressing, "Progress state should be .Progressing while changing progress value")
@@ -89,7 +89,7 @@ import UIKit
 
 // MARK : Initialization
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame: CGRect) {
@@ -97,12 +97,12 @@ import UIKit
         self.privateInit()
         self.registerForNotifications()
     }
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         self.privateInit()
         self.registerForNotifications()
     }
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         self.privateInit()
     }
     deinit {
@@ -119,7 +119,7 @@ import UIKit
         self.updateToDefaultStateAnimated(false)
     }
 
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         self.shapeLayer.frame = self.layer.bounds
         self.crossLayer.frame = self.layer.bounds
@@ -127,7 +127,7 @@ import UIKit
         self.bringSubviewToFront(self.imageView!)
     }
     
-    override var highlighted: Bool {
+    override public var highlighted: Bool {
         didSet {
             if (self.invertColorsOnHighlight) { self.imageView?.tintColor = highlighted ? self.shapeBackgroundColor : self.circleBorderColor }
             self.crossLayer.strokeColor = highlighted ? self.circleBackgroundColor.CGColor : self.circleBorderColor.CGColor
@@ -327,11 +327,11 @@ import UIKit
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    private func applicationDidEnterBackground(notification: NSNotification) {
+    func applicationDidEnterBackground(notification: NSNotification) {
         self.pauseLayer(self.layer)
     }
     
-    private func applicationWillEnterForeground(notification: NSNotification) {
+    func applicationWillEnterForeground(notification: NSNotification) {
         self.resumeLayer(self.layer)
     }
     
