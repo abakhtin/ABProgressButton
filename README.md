@@ -1,10 +1,11 @@
 ## ABProgressButton
-    ABProgressButton provides functionality for creating custom animation of UIButton during processing some task. 
-    Should be created in IB as custom class UIButton to prevent title of the button appearing while animating.
+
+ABProgressButton provides functionality for creating custom animation of UIButton during processing some task. 
+Should be created in IB as custom class UIButton to prevent title of the button appearing while animating.
 
 # Example
 
-Here is example of default button state with one custom image. Image can be found n the demo project. 
+Here is example of default button state with one custom image. Image can be found in the demo project. 
 ![alt tag](https://github.com/abakhtin/ABProgressButton/blob/master/ABProgressButtonDemo/GifExamples/example1.gif)
 
 # Storyboards
