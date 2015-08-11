@@ -5,7 +5,8 @@ Should be created in IB as custom class UIButton to prevent title of the button 
 
 # Example
 
-Here is example of default button state with one custom image. Image can be found in the demo project. 
+Here is example of default button appearance with one custom image. Image can be found in the demo project. 
+
 ![alt tag](https://github.com/abakhtin/ABProgressButton/blob/master/ABProgressButtonDemo/GifExamples/example1.gif)
 
 # Storyboards
