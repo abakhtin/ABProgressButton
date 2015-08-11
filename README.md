@@ -11,13 +11,14 @@ Here is example of default button appearance with one custom image. Image can be
 
 # Storyboards
 
-I've got some problems with runtime rendering of control. In any case this properties are available for changing straigt in IB. 
+I've got some problems with runttime rendering of control in IB. In any case this properties are available for changing straigt in IB and they are working on device. 
 For colors you can choose tintColor for view (whould be accepted for content and both borders if they are set to default) or for each component in separate.
 
 ![alt tag](https://github.com/abakhtin/ABProgressButton/blob/master/ABProgressButtonDemo/GifExamples/storyboard_properties.png)
 
 # Install
 
+Tested on xCode 7.0 beta 4 for Swift 2.0.
 To install to you project I would recommend you using CocoaPods.
 Just add this line to podfile (uses repo as not ready for global pods list yet). Whould be updated if appear in pods repo. 
 
