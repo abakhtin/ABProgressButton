@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var progressButton: ABProgressButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,26 +21,26 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func progressButtonAction(sender: AnyObject) {
+    @IBAction func progressButtonAction(sender: ABProgressButton) {
 
-        self.progressButton.progressState = self.progressButton.progressState == .Progressing ? .Default : .Progressing
+        sender.progressState = sender.progressState == .Progressing ? .Default : .Progressing
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.progressButton.progress = 0.2
+            sender.progress = 0.2
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.progressButton.progress! += 0.2
+                sender.progress! += 0.2
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    self.progressButton.progress! += 0.3
+                    sender.progress! += 0.3
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
-                        self.progressButton.progress = 1.0
+                        sender.progress = 1.0
 
                         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                         dispatch_after(delayTime, dispatch_get_main_queue()) {
-                            self.progressButton .setTitle("Dowloaded", forState: UIControlState.Normal)
-                            self.progressButton.progressState = .Default
+                            sender.setTitle("Dowloaded", forState: UIControlState.Normal)
+                            sender.progressState = .Default
                         }
                     }
                 }

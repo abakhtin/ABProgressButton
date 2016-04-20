@@ -91,14 +91,11 @@ import UIKit
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         self.privateInit()
         self.registerForNotifications()
     }
-    override public func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.privateInit()
         self.registerForNotifications()
     }
@@ -122,6 +119,7 @@ import UIKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.shapeLayer.frame = self.layer.bounds
+        self.updateShapeLayer()
         self.crossLayer.frame = self.layer.bounds
         self.progressLayer.frame = self.layer.bounds
         self.bringSubviewToFront(self.imageView!)
@@ -173,10 +171,16 @@ import UIKit
         self.crossLayer.hidden = false
         self.animateProgressingState(self.shapeLayer)
     }
+    private func updateShapeLayer() {
+        if self.progressState == .Default {
+            self.shapeLayer.path = self.defaultStatePath().CGPath
+        }
+        self.crossLayer.path = self.crossPath().CGPath
+    }
     private func updateProgressLayer() {
         self.progressLayer.hidden = (self.progressState != .Progressing || self.progress == nil)
         if (self.progressLayer.hidden == false) {
-            let progressCircleRadius = self.circleRadius-self.circleBorderWidth
+            let progressCircleRadius = self.circleRadius - self.circleBorderWidth
             let progressArcAngle = CGFloat(M_PI) * 2 * self.progress! - CGFloat(M_PI_2)
             let circlePath = UIBezierPath()
             let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
@@ -192,7 +196,7 @@ import UIKit
             self.progressLayer.addAnimation(updateProgressAnimation, forKey: "update progress animation")
         }
     }
-    
+
 // MARK : Methods used to animate states and transions between them
 
     private let firstStepAnimationTime = 0.3
@@ -317,9 +321,9 @@ import UIKit
 // Should be done to prevent animation broken on entering foreground
     
     private func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"applicationDidEnterBackground:",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(self.applicationDidEnterBackground(_:)),
             name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"applicationWillEnterForeground:",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(self.applicationWillEnterForeground(_:)),
             name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
