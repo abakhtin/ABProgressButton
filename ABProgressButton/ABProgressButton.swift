@@ -11,49 +11,51 @@ import UIKit
 ///    ABProgressButton provides functionality for creating custom animation of UIButton during processing some task.
 ///    Should be created in IB as custom class UIButton to prevent title of the button appearing.
 ///    Provides mechanism for color inverting on highlitening and using tintColor for textColor(default behavior for system button)
-@IBDesignable @objc public class ABProgressButton: UIButton {
+@IBDesignable @objc open class ABProgressButton: UIButton {
+
+    @IBInspectable open var animationShift: CGSize = CGSize(width: 0.0, height: 0.0)
 
     /// **UI configuration. IBInspectable.** Allows change corner radius on default button state. Has default value of 5.0
-    @IBInspectable public var cornerRadius: CGFloat = 5.0
+    @IBInspectable open var cornerRadius: CGFloat = 5.0
 
     
     /// **UI configuration. IBInspectable.** Allows change border width on default button state. Has default value of 3.0
-    @IBInspectable public var borderWidth: CGFloat = 3.0
+    @IBInspectable open var borderWidth: CGFloat = 3.0
     
     /// **UI configuration. IBInspectable.** Allows change border color on default button state. Has default value of control tintColor
-    @IBInspectable public lazy var borderColor: UIColor = {
+    @IBInspectable open lazy var borderColor: UIColor = {
         return self.tintColor
     }()
     
     /// **UI configuration. IBInspectable.** Allows change circle radius on processing button state. Has default value of 20.0
-    @IBInspectable public var circleRadius: CGFloat = 20.0
+    @IBInspectable open var circleRadius: CGFloat = 20.0
     
     /// **UI configuration. IBInspectable.** Allows change circle border width on processing button state. Has default value of 3.0
-    @IBInspectable public var circleBorderWidth: CGFloat = 3.0
+    @IBInspectable open var circleBorderWidth: CGFloat = 3.0
     
     /// **UI configuration. IBInspectable.** Allows change circle border color on processing button state. Has default value of control tintColor
-    @IBInspectable public lazy var circleBorderColor: UIColor = {
+    @IBInspectable open lazy var circleBorderColor: UIColor = {
         return self.tintColor
     }()
     
     /// **UI configuration. IBInspectable.** Allows change circle background color on processing button state. Has default value of UIColor.whiteColor()
-    @IBInspectable public var circleBackgroundColor: UIColor = UIColor.whiteColor()
+    @IBInspectable open var circleBackgroundColor: UIColor = UIColor.white
     
     /// **UI configuration. IBInspectable.** Allows change circle cut angle on processing button state. 
     /// Should have value between 0 and 360 degrees. Has default value of 45 degrees
-    @IBInspectable public var circleCutAngle: CGFloat = 45.0
+    @IBInspectable open var circleCutAngle: CGFloat = 45.0
     
     
     /// **UI configuration. IBInspectable.** 
     /// If true, colors of content and background will be inverted on button highlightening. Image should be used as template for correct image color inverting.
     /// If false you should use default mechanism for text and images highlitening. 
     /// Has default value of true
-    @IBInspectable public var invertColorsOnHighlight: Bool = true
+    @IBInspectable open var invertColorsOnHighlight: Bool = true
     
     /// **UI configuration. IBInspectable.** 
     /// If true, tintColor whould be used for text, else value from UIButton.textColorForState() would be used.
     /// Has default value of true
-    @IBInspectable public var useTintColorForText: Bool = true
+    @IBInspectable open var useTintColorForText: Bool = true
 
     
     /** **Buttons states enum**
@@ -61,26 +63,26 @@ import UIKit
     - .Progressing: State of button without content, button has the form of circle with cut angle with rotation animation. 
     */
     public enum State {
-        case Default, Progressing
+        case `default`, progressing
     }
     
     /** **State changing**
     Should be used to change state of button from one state to another. All transitions between states would be animated. To update progress indicator use `progress` value
     */
-    public var progressState: State = .Default {
+    open var progressState: State = .default {
         didSet {
-            if(progressState == .Default) { self.updateToDefaultStateAnimated(true)}
-            if(progressState == .Progressing) { self.updateToProgressingState()}
+            if(progressState == .default) { self.updateToDefaultStateAnimated(true)}
+            if(progressState == .progressing) { self.updateToProgressingState()}
             self.updateProgressLayer()
         }
     }
     /** **State changing**
     Should be used to change progress indicator. Should have value from 0.0 to 1.0. `progressState` should be .Progressing to allow change progress(except nil value).
     */
-    public var progress: CGFloat? {
+    open var progress: CGFloat? {
         didSet {
             if progress != nil {
-                assert(self.progressState == .Progressing, "Progress state should be .Progressing while changing progress value")
+                assert(self.progressState == .progressing, "Progress state should be .Progressing while changing progress value")
             }
             progress = progress == nil ? nil : min(progress!, CGFloat(1.0))
             self.updateProgressLayer()
@@ -99,139 +101,139 @@ import UIKit
         self.privateInit()
         self.registerForNotifications()
     }
-    override public func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         self.privateInit()
     }
     deinit {
         self.unregisterFromNotifications()
     }
 
-    private func privateInit() {
-        if (self.useTintColorForText) { self.setTitleColor(self.tintColor, forState: UIControlState.Normal) }
-        if (self.invertColorsOnHighlight) { self.setTitleColor(self.shapeBackgroundColor, forState: UIControlState.Highlighted) }
+    fileprivate func privateInit() {
+        if (self.useTintColorForText) { self.setTitleColor(self.tintColor, for: UIControlState()) }
+        if (self.invertColorsOnHighlight) { self.setTitleColor(self.shapeBackgroundColor, for: UIControlState.highlighted) }
         
-        self.layer.insertSublayer(self.shapeLayer, atIndex: 0)
-        self.layer.insertSublayer(self.crossLayer, atIndex: 1)
-        self.layer.insertSublayer(self.progressLayer, atIndex: 2)
+        self.layer.insertSublayer(self.shapeLayer, at: 0)
+        self.layer.insertSublayer(self.crossLayer, at: 1)
+        self.layer.insertSublayer(self.progressLayer, at: 2)
         self.updateToDefaultStateAnimated(false)
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         self.shapeLayer.frame = self.layer.bounds
         self.updateShapeLayer()
         self.crossLayer.frame = self.layer.bounds
         self.progressLayer.frame = self.layer.bounds
-        self.bringSubviewToFront(self.imageView!)
+        self.bringSubview(toFront: self.imageView!)
     }
     
-    override public var highlighted: Bool {
+    override open var isHighlighted: Bool {
         didSet {
-            if (self.invertColorsOnHighlight) { self.imageView?.tintColor = highlighted ? self.shapeBackgroundColor : self.circleBorderColor }
-            self.crossLayer.strokeColor = highlighted ? self.circleBackgroundColor.CGColor : self.circleBorderColor.CGColor
-            self.progressLayer.strokeColor = highlighted ? self.circleBackgroundColor.CGColor : self.circleBorderColor.CGColor
-            if (highlighted) {
-                self.shapeLayer.fillColor = (progressState == State.Default) ? self.borderColor.CGColor : self.circleBorderColor.CGColor
+            if (self.invertColorsOnHighlight) { self.imageView?.tintColor = isHighlighted ? self.shapeBackgroundColor : self.circleBorderColor }
+            self.crossLayer.strokeColor = isHighlighted ? self.circleBackgroundColor.cgColor : self.circleBorderColor.cgColor
+            self.progressLayer.strokeColor = isHighlighted ? self.circleBackgroundColor.cgColor : self.circleBorderColor.cgColor
+            if (isHighlighted) {
+                self.shapeLayer.fillColor = (progressState == State.default) ? self.borderColor.cgColor : self.circleBorderColor.cgColor
             }
             else {
-                self.shapeLayer.fillColor = (progressState == State.Default) ? self.shapeBackgroundColor.CGColor : self.circleBackgroundColor.CGColor
+                self.shapeLayer.fillColor = (progressState == State.default) ? self.shapeBackgroundColor.cgColor : self.circleBackgroundColor.cgColor
             }
         }
     }
 
 // MARK : Methods used to update states
     
-    private var shapeLayer = CAShapeLayer()
-    private lazy var crossLayer: CAShapeLayer = {
+    fileprivate var shapeLayer = CAShapeLayer()
+    fileprivate lazy var crossLayer: CAShapeLayer = {
         let crossLayer = CAShapeLayer()
-        crossLayer.path = self.crossPath().CGPath
-        crossLayer.strokeColor = self.circleBorderColor.CGColor
+        crossLayer.path = self.crossPath().cgPath
+        crossLayer.strokeColor = self.circleBorderColor.cgColor
         return crossLayer
         }()
-    private lazy var progressLayer: CAShapeLayer = {
+    fileprivate lazy var progressLayer: CAShapeLayer = {
         let progressLayer = CAShapeLayer()
-        progressLayer.strokeColor = self.circleBorderColor.CGColor
-        progressLayer.fillColor = UIColor.clearColor().CGColor
+        progressLayer.strokeColor = self.circleBorderColor.cgColor
+        progressLayer.fillColor = UIColor.clear.cgColor
         return progressLayer
         }()
-    private lazy var shapeBackgroundColor: UIColor = {
+    fileprivate lazy var shapeBackgroundColor: UIColor = {
         return self.backgroundColor ?? self.circleBackgroundColor
         }()
 
-    private func updateToDefaultStateAnimated(animated:Bool) {
-        self.shapeLayer.strokeColor = self.borderColor.CGColor;
-        self.shapeLayer.fillColor = self.shapeBackgroundColor.CGColor
-        self.crossLayer.hidden = true
+    fileprivate func updateToDefaultStateAnimated(_ animated:Bool) {
+        self.shapeLayer.strokeColor = self.borderColor.cgColor;
+        self.shapeLayer.fillColor = self.shapeBackgroundColor.cgColor
+        self.crossLayer.isHidden = true
         self.animateDefaultStateAnimated(animated)
     }
-    private func updateToProgressingState() {
+    fileprivate func updateToProgressingState() {
         self.titleLabel?.alpha = 0.0
-        self.shapeLayer.strokeColor = self.circleBorderColor.CGColor
-        self.shapeLayer.fillColor = self.circleBackgroundColor.CGColor
-        self.crossLayer.hidden = false
+        self.shapeLayer.strokeColor = self.circleBorderColor.cgColor
+        self.shapeLayer.fillColor = self.circleBackgroundColor.cgColor
+        self.crossLayer.isHidden = false
         self.animateProgressingState(self.shapeLayer)
     }
-    private func updateShapeLayer() {
-        if self.progressState == .Default {
-            self.shapeLayer.path = self.defaultStatePath().CGPath
+    fileprivate func updateShapeLayer() {
+        if self.progressState == .default {
+            self.shapeLayer.path = self.defaultStatePath().cgPath
         }
-        self.crossLayer.path = self.crossPath().CGPath
+        self.crossLayer.path = self.crossPath().cgPath
     }
-    private func updateProgressLayer() {
-        self.progressLayer.hidden = (self.progressState != .Progressing || self.progress == nil)
-        if (self.progressLayer.hidden == false) {
+    fileprivate func updateProgressLayer() {
+        self.progressLayer.isHidden = (self.progressState != .progressing || self.progress == nil)
+        if (self.progressLayer.isHidden == false) {
             let progressCircleRadius = self.circleRadius - self.circleBorderWidth
             let progressArcAngle = CGFloat(M_PI) * 2 * self.progress! - CGFloat(M_PI_2)
             let circlePath = UIBezierPath()
-            let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
-            circlePath.addArcWithCenter(center, radius:progressCircleRadius, startAngle:CGFloat(-M_PI_2), endAngle:progressArcAngle, clockwise:true)
+            let center = CGPoint(x: self.bounds.midX + self.animationShift.width, y: self.bounds.midY + self.animationShift.height)
+            circlePath.addArc(withCenter: center, radius:progressCircleRadius, startAngle:CGFloat(-M_PI_2), endAngle:progressArcAngle, clockwise:true)
             circlePath.lineWidth = self.circleBorderWidth
             
             let updateProgressAnimation = CABasicAnimation();
             updateProgressAnimation.keyPath = "path"
             updateProgressAnimation.fromValue = self.progressLayer.path
-            updateProgressAnimation.toValue = circlePath.CGPath
+            updateProgressAnimation.toValue = circlePath.cgPath
             updateProgressAnimation.duration = progressUpdateAnimationTime
-            self.progressLayer.path = circlePath.CGPath
-            self.progressLayer.addAnimation(updateProgressAnimation, forKey: "update progress animation")
+            self.progressLayer.path = circlePath.cgPath
+            self.progressLayer.add(updateProgressAnimation, forKey: "update progress animation")
         }
     }
 
 // MARK : Methods used to animate states and transions between them
 
-    private let firstStepAnimationTime = 0.3
-    private let secondStepAnimationTime = 0.15
-    private let textAppearingAnimationTime = 0.2
-    private let progressUpdateAnimationTime = 0.1
+    fileprivate let firstStepAnimationTime = 0.3
+    fileprivate let secondStepAnimationTime = 0.15
+    fileprivate let textAppearingAnimationTime = 0.2
+    fileprivate let progressUpdateAnimationTime = 0.1
 
-    private func animateDefaultStateAnimated(animated: Bool) {
+    fileprivate func animateDefaultStateAnimated(_ animated: Bool) {
         if !animated {
-            self.shapeLayer.path = self.defaultStatePath().CGPath
+            self.shapeLayer.path = self.defaultStatePath().cgPath
             self.titleLabel?.alpha = 1.0
             self.showContentImage()
         } else {
-            self.shapeLayer.removeAnimationForKey("rotation animation")
+            self.shapeLayer.removeAnimation(forKey: "rotation animation")
             
             let firstStepAnimation = CABasicAnimation();
             firstStepAnimation.keyPath = "path"
             firstStepAnimation.fromValue = self.shapeLayer.path
-            firstStepAnimation.toValue = self.animateToCircleReplacePath().CGPath
+            firstStepAnimation.toValue = self.animateToCircleReplacePath().cgPath
             firstStepAnimation.duration = secondStepAnimationTime
-            self.shapeLayer.path = self.animateToCircleFakeRoundPath().CGPath
-            self.shapeLayer.addAnimation(firstStepAnimation, forKey: "first step animation")
+            self.shapeLayer.path = self.animateToCircleFakeRoundPath().cgPath
+            self.shapeLayer.add(firstStepAnimation, forKey: "first step animation")
             
             let secondStepAnimation = CABasicAnimation();
             secondStepAnimation.keyPath = "path"
             secondStepAnimation.fromValue = self.shapeLayer.path!
-            secondStepAnimation.toValue = self.defaultStatePath().CGPath
+            secondStepAnimation.toValue = self.defaultStatePath().cgPath
             secondStepAnimation.beginTime = CACurrentMediaTime() + secondStepAnimationTime
             secondStepAnimation.duration = firstStepAnimationTime
-            self.shapeLayer.path = self.defaultStatePath().CGPath
-            self.shapeLayer.addAnimation(secondStepAnimation, forKey: "second step animation")
+            self.shapeLayer.path = self.defaultStatePath().cgPath
+            self.shapeLayer.add(secondStepAnimation, forKey: "second step animation")
             
             let delay = secondStepAnimationTime + firstStepAnimationTime
             
-            UIView.animateWithDuration(textAppearingAnimationTime, delay: delay, options: UIViewAnimationOptions.TransitionNone,
+            UIView.animate(withDuration: textAppearingAnimationTime, delay: delay, options: UIViewAnimationOptions(),
                 animations: { () -> Void in
                     self.titleLabel?.alpha = 1.0
                 },
@@ -240,23 +242,23 @@ import UIKit
                 })
         }
     }
-    private func animateProgressingState(layer: CAShapeLayer) {
+    fileprivate func animateProgressingState(_ layer: CAShapeLayer) {
         let firstStepAnimation = CABasicAnimation();
         firstStepAnimation.keyPath = "path"
         firstStepAnimation.fromValue = layer.path
-        firstStepAnimation.toValue = self.animateToCircleFakeRoundPath().CGPath
+        firstStepAnimation.toValue = self.animateToCircleFakeRoundPath().cgPath
         firstStepAnimation.duration = firstStepAnimationTime
-        layer.path = self.animateToCircleReplacePath().CGPath
-        layer.addAnimation(firstStepAnimation, forKey: "first step animation")
+        layer.path = self.animateToCircleReplacePath().cgPath
+        layer.add(firstStepAnimation, forKey: "first step animation")
         
         let secondStepAnimation = CABasicAnimation();
         secondStepAnimation.keyPath = "path"
         secondStepAnimation.fromValue = layer.path
-        secondStepAnimation.toValue = self.progressingStatePath().CGPath
+        secondStepAnimation.toValue = self.progressingStatePath().cgPath
         secondStepAnimation.beginTime = CACurrentMediaTime() + firstStepAnimationTime
         secondStepAnimation.duration = secondStepAnimationTime
-        layer.path = self.progressingStatePath().CGPath
-        layer.addAnimation(secondStepAnimation, forKey: "second step animation")
+        layer.path = self.progressingStatePath().cgPath
+        layer.add(secondStepAnimation, forKey: "second step animation")
         
         let animation = CABasicAnimation();
         animation.keyPath = "transform.rotation";
@@ -265,8 +267,10 @@ import UIKit
         animation.repeatCount = Float.infinity
         animation.duration = 1.5
         animation.beginTime = CACurrentMediaTime() + firstStepAnimationTime + secondStepAnimationTime
-        layer.addAnimation(animation, forKey: "rotation animation")
-        UIView.animateWithDuration(textAppearingAnimationTime, animations: { () -> Void in
+        layer.add(animation, forKey: "rotation animation")
+        layer.anchorPoint = CGPoint(x: 0.5 + self.animationShift.width / self.bounds.size.width,
+                                    y: 0.5 + self.animationShift.height / self.bounds.size.height)
+        UIView.animate(withDuration: textAppearingAnimationTime, animations: { () -> Void in
             self.titleLabel?.alpha = 0.0
             self.hideContentImage()
         })
@@ -274,45 +278,45 @@ import UIKit
     
 // MARK : Pathes creation for different states
     
-    private func defaultStatePath() ->  UIBezierPath {
+    fileprivate func defaultStatePath() ->  UIBezierPath {
         let bordersPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.cornerRadius)
         bordersPath.lineWidth = self.borderWidth
         return bordersPath
     }
-    private func progressingStatePath() ->  UIBezierPath {
-        let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+    fileprivate func progressingStatePath() ->  UIBezierPath {
+        let center = CGPoint(x: self.bounds.midX + self.animationShift.width, y: self.bounds.midY + self.animationShift.height)
         let circlePath = UIBezierPath()
         let startAngle = self.circleCutAngle/180 * CGFloat(M_PI)
         let endAngle = 2 * CGFloat(M_PI)
-        circlePath.addArcWithCenter(center, radius:self.circleRadius, startAngle:startAngle, endAngle:endAngle, clockwise:true)
+        circlePath.addArc(withCenter: center, radius:self.circleRadius, startAngle:startAngle, endAngle:endAngle, clockwise:true)
         circlePath.lineWidth = self.circleBorderWidth
         return circlePath
     }
-    private func animateToCircleFakeRoundPath() ->  UIBezierPath {
-        let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
-        let rect = CGRectMake(center.x - self.circleRadius, center.y - self.circleRadius, self.circleRadius * 2, self.circleRadius * 2)
+    fileprivate func animateToCircleFakeRoundPath() ->  UIBezierPath {
+        let center = CGPoint(x: self.bounds.midX + self.animationShift.width, y: self.bounds.midY + self.animationShift.height)
+        let rect = CGRect(x: center.x - self.circleRadius, y: center.y - self.circleRadius, width: self.circleRadius * 2, height: self.circleRadius * 2)
         let bordersPath = UIBezierPath(roundedRect: rect, cornerRadius: self.circleRadius)
         bordersPath.lineWidth = self.borderWidth
         return bordersPath
     }
-    private func animateToCircleReplacePath() ->  UIBezierPath {
-        let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+    fileprivate func animateToCircleReplacePath() ->  UIBezierPath {
+        let center = CGPoint(x: self.bounds.midX + self.animationShift.width, y: self.bounds.midY + self.animationShift.height)
         let circlePath = UIBezierPath()
-        circlePath.addArcWithCenter(center, radius:self.circleRadius, startAngle:CGFloat(0.0), endAngle:CGFloat(M_PI * 2), clockwise:true)
+        circlePath.addArc(withCenter: center, radius:self.circleRadius, startAngle:CGFloat(0.0), endAngle:CGFloat(M_PI * 2), clockwise:true)
         circlePath.lineWidth = self.circleBorderWidth
         return circlePath
     }
-    private func crossPath() -> UIBezierPath {
+    fileprivate func crossPath() -> UIBezierPath {
         let crossPath = UIBezierPath()
-        let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
-        let point1 = CGPointMake(center.x - self.circleRadius/2, center.y + self.circleRadius / 2)
-        let point2 = CGPointMake(center.x + self.circleRadius/2, center.y + self.circleRadius / 2)
-        let point3 = CGPointMake(center.x + self.circleRadius/2, center.y - self.circleRadius / 2)
-        let point4 = CGPointMake(center.x - self.circleRadius/2, center.y - self.circleRadius / 2)
-        crossPath.moveToPoint(point1)
-        crossPath.addLineToPoint(point3)
-        crossPath.moveToPoint(point2)
-        crossPath.addLineToPoint(point4)
+        let center = CGPoint(x: self.bounds.midX + self.animationShift.width, y: self.bounds.midY + self.animationShift.height)
+        let point1 = CGPoint(x: center.x - self.circleRadius/2, y: center.y + self.circleRadius / 2)
+        let point2 = CGPoint(x: center.x + self.circleRadius/2, y: center.y + self.circleRadius / 2)
+        let point3 = CGPoint(x: center.x + self.circleRadius/2, y: center.y - self.circleRadius / 2)
+        let point4 = CGPoint(x: center.x - self.circleRadius/2, y: center.y - self.circleRadius / 2)
+        crossPath.move(to: point1)
+        crossPath.addLine(to: point3)
+        crossPath.move(to: point2)
+        crossPath.addLine(to: point4)
         crossPath.lineWidth = self.circleBorderWidth
         return crossPath
     }
@@ -320,37 +324,37 @@ import UIKit
 // MARK : processing animation stopping while in background
 // Should be done to prevent animation broken on entering foreground
     
-    private func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(self.applicationDidEnterBackground(_:)),
-            name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(self.applicationWillEnterForeground(_:)),
-            name: UIApplicationDidEnterBackgroundNotification, object: nil)
+    fileprivate func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector:#selector(self.applicationDidEnterBackground(_:)),
+            name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.applicationWillEnterForeground(_:)),
+            name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
-    private func unregisterFromNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    fileprivate func unregisterFromNotifications() {
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func applicationDidEnterBackground(notification: NSNotification) {
+    func applicationDidEnterBackground(_ notification: Notification) {
         self.pauseLayer(self.layer)
     }
     
-    func applicationWillEnterForeground(notification: NSNotification) {
+    func applicationWillEnterForeground(_ notification: Notification) {
         self.resumeLayer(self.layer)
     }
     
-    private func pauseLayer(layer: CALayer) {
-        let pausedTime = layer.convertTime(CACurrentMediaTime(), fromLayer:nil)
+    fileprivate func pauseLayer(_ layer: CALayer) {
+        let pausedTime = layer.convertTime(CACurrentMediaTime(), from:nil)
         layer.speed = 0.0
         layer.timeOffset = pausedTime
     }
     
-    private func resumeLayer(layer: CALayer) {
+    fileprivate func resumeLayer(_ layer: CALayer) {
         let pausedTime = layer.timeOffset
         layer.speed = 1.0
         layer.timeOffset = 0.0
         layer.beginTime = 0.0
-        let timeSincePause = layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
         layer.beginTime = timeSincePause
     }
 
@@ -358,30 +362,30 @@ import UIKit
 // The only available way to make images hide is to set the object to nil
 // If you now any way else please help me here
     
-    private var imageForNormalState: UIImage?
-    private var imageForHighlitedState: UIImage?
-    private var imageForDisabledState: UIImage?
+    fileprivate var imageForNormalState: UIImage?
+    fileprivate var imageForHighlitedState: UIImage?
+    fileprivate var imageForDisabledState: UIImage?
     
-    private func hideContentImage() {
-        self.imageForNormalState = self.imageForState(UIControlState.Normal)
-        self.setImage(UIImage(), forState: UIControlState.Normal)
-        self.imageForHighlitedState = self.imageForState(UIControlState.Highlighted)
-        self.setImage(UIImage(), forState: UIControlState.Highlighted)
-        self.imageForDisabledState = self.imageForState(UIControlState.Disabled)
-        self.setImage(UIImage(), forState: UIControlState.Disabled)
+    fileprivate func hideContentImage() {
+        self.imageForNormalState = self.image(for: UIControlState())
+        self.setImage(UIImage(), for: UIControlState())
+        self.imageForHighlitedState = self.image(for: UIControlState.highlighted)
+        self.setImage(UIImage(), for: UIControlState.highlighted)
+        self.imageForDisabledState = self.image(for: UIControlState.disabled)
+        self.setImage(UIImage(), for: UIControlState.disabled)
     }
     
-    private func showContentImage() {
+    fileprivate func showContentImage() {
         if self.imageForNormalState != nil {
-            self.setImage(self.imageForNormalState, forState: UIControlState.Normal);
+            self.setImage(self.imageForNormalState, for: UIControlState());
             self.imageForNormalState = nil
         }
         if self.imageForHighlitedState != nil {
-            self.setImage(self.imageForHighlitedState, forState: UIControlState.Highlighted)
+            self.setImage(self.imageForHighlitedState, for: UIControlState.highlighted)
             self.imageForHighlitedState = nil
         }
         if self.imageForDisabledState != nil {
-            self.setImage(self.imageForDisabledState, forState: UIControlState.Disabled)
+            self.setImage(self.imageForDisabledState, for: UIControlState.disabled)
             self.imageForDisabledState = nil
         }
     }

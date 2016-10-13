@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,25 +14,23 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbw-UY-wEC" customClass="ABProgressButton" customModule="ABProgressButtonDemo" customModuleProvider="target">
-                                <rect key="frame" x="210" y="278" width="180" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KIt-qg-OfC"/>
                                     <constraint firstAttribute="width" constant="180" id="Z6a-7c-Iq9"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="Download" image="8A045B54-3138-4E8E-A907-FE1B777E769E"/>
-                                <state key="highlighted" image="8A045B54-3138-4E8E-A907-FE1B777E769E"/>
+                                <state key="normal" title="Download" image="C9644C2A-263E-467B-BEAF-76DA62E8F8F7"/>
+                                <state key="highlighted" image="C9644C2A-263E-467B-BEAF-76DA62E8F8F7"/>
                                 <connections>
                                     <action selector="progressButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmT-l1-Slf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tj-bI-Kxj" customClass="ABProgressButton" customModule="ABProgressButtonDemo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="373" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GAE-a7-jPM"/>
                                 </constraints>
@@ -39,12 +38,17 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Download" image="download"/>
                                 <state key="highlighted" image="download"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="animationShift">
+                                        <size key="value" width="20" height="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="progressButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddU-lF-Rd9"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9Tj-bI-Kxj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Jyd-eQ-64C"/>
                             <constraint firstItem="dbw-UY-wEC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="L8z-Qk-Hl8"/>
@@ -60,7 +64,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8A045B54-3138-4E8E-A907-FE1B777E769E" width="34" height="34">
+        <image name="C9644C2A-263E-467B-BEAF-76DA62E8F8F7" width="34" height="34">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
